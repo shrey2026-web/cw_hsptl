@@ -25,6 +25,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+import os
+from generate_data import generate_ed_data
+
+if not os.path.exists("ed_visits.csv"):
+    generate_ed_data(out_csv="ed_visits.csv")
+
 # ---- Load data ----
 @st.cache_data
 def load_data(path: str = "ed_visits.csv") -> pd.DataFrame:
